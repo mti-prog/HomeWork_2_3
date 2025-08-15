@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initListener() {
-        findViewById(R.id.btn_dot).setOnClickListener(this::onNumberClick);
         findViewById(R.id.btn_one).setOnClickListener(this::onNumberClick);
         findViewById(R.id.btn_two).setOnClickListener(this::onNumberClick);
         findViewById(R.id.btn_three).setOnClickListener(this::onNumberClick);
@@ -75,9 +74,7 @@ public class MainActivity extends AppCompatActivity {
             tvResult.setText("0");
         } else if (tvResult.getText().toString().equals("0") || isOperationClick) {
             tvResult.setText(text);
-        } else if (view.getId() == R.id.btn_dot) {
-            tvResult.append(text);
-        } else {
+        }else {
             tvResult.append(text);
         }
         isOperationClick = false;
