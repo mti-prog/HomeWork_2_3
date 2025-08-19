@@ -1,5 +1,6 @@
 package com.geeks.homework_2_3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private int a, b;
     private boolean isOperationClick;
     private int result;
-    MaterialButton btn_minus;
+    MaterialButton btn_next;
     private String currentOperation;
 
     @Override
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_nine).setOnClickListener(this::onNumberClick);
         findViewById(R.id.btn_zero).setOnClickListener(this::onNumberClick);
         findViewById(R.id.btn_ac).setOnClickListener(this::onNumberClick);
+        btn_next = findViewById(R.id.btn_next);
+        btn_next.setVisibility(View.GONE);
         findViewById(R.id.btn_plus).setOnClickListener(v -> {
             onPlusClick();
             currentOperation = "+";
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onNumberClick(View view) {
         String text = ((MaterialButton) view).getText().toString();
+        btn_next.setVisibility(View.GONE);
         if (text.equals("AC")) {
             a = 0;
             b = 0;
@@ -82,25 +86,30 @@ public class MainActivity extends AppCompatActivity {
 
     public void onPlusClick() {
         a = Integer.parseInt(tvResult.getText().toString());
-        isOperationClick = true;
+        isOperationClick = true;;
+        btn_next.setVisibility(View.GONE);
     }
 
     public void onMinusClick() {
         a = Integer.parseInt(tvResult.getText().toString());
         isOperationClick = true;
+        btn_next.setVisibility(View.GONE);
     }
 
     public void onMultiplyClick() {
         a = Integer.parseInt(tvResult.getText().toString());
         isOperationClick = true;
+        btn_next.setVisibility(View.GONE);
     }
 
     public void onDivideClick() {
         a = Integer.parseInt(tvResult.getText().toString());
         isOperationClick = true;
+        btn_next.setVisibility(View.GONE);
     }
 
     private void onEqualClick(View view) {
+        btn_next.setVisibility(View.VISIBLE);
         b = Integer.parseInt(tvResult.getText().toString());
         switch (currentOperation) {
             case "+":
@@ -123,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
         }
         tvResult.setText(String.valueOf(result));
         isOperationClick = true;
+        btn_next.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            intent.putExtra("result", Integer.parseInt(tvResult.getText().toString()));
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        });
     }
-
 }

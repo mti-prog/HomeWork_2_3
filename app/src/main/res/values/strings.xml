@@ -19,4 +19,18 @@
     <string name="zero">0</string>
     <string name="dot">.</string>
     <string name="equal">=</string>
+    <string name="next">Next</string>
+    <string name="category">Category</string>
+    <string name="explore_the_nightlife_of_your_city">Explore the nightlife of your city</string>
+    <string name="free">Free</string>
+    <string name="price">Price💰</string>
+    <string name="participants">Participants</string>
+    <string name="accessibility">Accessibility</string>
+    <string name="pr">Price</string>
+    <string-array name="category_types">
+        <item>Type</item>
+        <item>Option 1</item>
+        <item>Option 2</item>
+        <item>Option 3</item>
+    </string-array>
 </resources>
